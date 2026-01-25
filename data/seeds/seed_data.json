@@ -1,0 +1,292 @@
+{
+  "categories": [
+    {
+      "name": "Historical Building",
+      "name_zh": "歷史建築",
+      "description": "Buildings registered as historical heritage by local or national government"
+    },
+    {
+      "name": "Temple",
+      "name_zh": "廟宇",
+      "description": "Religious temples and shrines"
+    },
+    {
+      "name": "Traditional Residence",
+      "name_zh": "傳統民居",
+      "description": "Traditional residential buildings with cultural significance"
+    },
+    {
+      "name": "Monument",
+      "name_zh": "古蹟",
+      "description": "National monuments and protected heritage sites"
+    }
+  ],
+  "sites": [
+    {
+      "name": "Meihe Villa",
+      "name_zh": "梅鶴山莊",
+      "slug": "meihe-villa",
+      "address": "桃園市大溪區福安里頭寮一號",
+      "city": "桃園市",
+      "latitude": 24.847,
+      "longitude": 121.278,
+      "description": "Meihe Villa is a historic Minnan-style residence built in 1869 by Lin Deng-yun, who served as the estate manager for the Lin Ben-yuan family. The villa was named after the Song Dynasty hermit Lin Hejing's famous saying 'plum blossoms as wife, cranes as children' (梅妻鶴子). Registered as a historical building in 2004, the villa features traditional defensive architecture with seven-bay wide main hall, swallow-tail roof ridge gate tower, and intricate decorations including paintings, clay sculptures, cut-and-paste ceramics, and wood carvings.",
+      "description_zh": "梅鶴山莊是一座建於1869年（清同治8年）的歷史建築，由林本源家族大嵙崁租館管事林登雲所建。1923年由大溪文人鄭永南以北宋隱士林和靖「梅妻鶴子」典故命名。2004年登錄為桃園市歷史建築。建築為傳統土造閩南式建築，格局為二落六護龍，正身面寬七開間，具有燕尾屋脊的門樓、精緻的彩繪、泥塑、剪黏與木雕裝飾，是大溪極負盛名的建築之一。",
+      "history": "Meihe Villa was constructed in 1869 (Qing Dynasty, Tongzhi 8th year) by Lin Deng-yun (1815-1888), originally named 'Rongfeng Di' (榮封第). Lin Deng-yun was the estate manager for the renowned Lin Ben-yuan family of Banqiao. After the Lin Ben-yuan family relocated to Banqiao, Lin Deng-yun chose to stay in Daxi, establishing himself as a prominent local figure through various businesses including mines, rice mills, brick factories, tea gardens, and trading companies.\n\nIn 1875, at age 61, Lin Deng-yun was awarded the title of Fifth-Rank Official (五品大夫) by the Qing court after donating to become a Tongzhi (同知). The villa was strategically located facing the area where Atayal indigenous people entered and exited, requiring strong defensive features.\n\nIn 1923, the renowned Daxi scholar Zheng Yongnan renamed the residence 'Meihe Villa' (梅鶴山莊), drawing inspiration from the Song Dynasty hermit poet Lin Hejing (Lin Bu, 967-1028), who was famous for his reclusive lifestyle at West Lake's Gushan, keeping plum trees and cranes as companions, leading to the idiom 'plum blossoms as wife, cranes as children' (梅妻鶴子).\n\nThe Lin family has now passed down seven generations, with notable descendants including former Daxi Mayor Lin Xi-da and Zhu Lin-gui, mother of former Taoyuan County Magistrate Eric Chu. In 2018, the 'Taoyuan Daxi Lin Family Meihe Villa Clan Association' was officially registered with the Taoyuan Cultural Affairs Bureau.\n\nRestoration work began in 2016, with the main hall completed first. The second and third phases of restoration, focusing on the left and right protective wings, were completed in August 2021.",
+      "history_zh": "梅鶴山莊由林登雲（字圻海，1815-1888）於清同治8年（1869年）興建，原名「榮封第」。林登雲祖籍福建漳州，原擔任林本源家族大嵙崁租館管事。林本源家族遷居板橋後，林登雲選擇在大溪定居，以「林本源商號總執事」為名號做生意，其後家業如雲，擁有礦場、米廠、磚廠、茶園、商號，成為大溪望族。\n\n1875年（光緒元年），林登雲61歲時上奏清廷捐納同知，獲封五品大夫，在前落門楣上掛「榮封第」匾額。建築選址面對泰雅族人進出的地點，具有挑戰性，需要家族團結合作，因此具有高度防禦性設計。\n\n1923年（大正12年），大溪文人鄭永南以北宋隱士林和靖「梅妻鶴子」典故，將「榮封第」題名為「梅鶴山莊」。林和靖（林逋，967-1028）為北宋著名詩人、隱士，一生不娶不仕，在杭州西湖孤山種梅養鶴，人稱「梅妻鶴子」。\n\n林家現已傳承七代，著名族人包括前大溪鎮長林熺達、前桃園縣長朱立倫之母朱林桂。2018年桃園市文化局立案成立「桃園市大溪林家梅鶴山莊族親會」。\n\n修復工程於2016年開始，第一期正身修復完成。第二、三期修復工程於2021年8月完工，修復範圍以左、右二護龍為主。",
+      "featured_image": "/images/hero/hero-main.jpg",
+      "images": "[\"/images/architecture/zhengmen.jpg\", \"/images/architecture/zhengting.jpg\", \"/images/architecture/yanwei.jpg\", \"/images/architecture/rongfeng-di.jpg\"]",
+      "designation_level": "桃園市歷史建築",
+      "designation_date": "2004-01-01",
+      "is_published": true,
+      "category_id": 1
+    }
+  ],
+  "news": [
+    {
+      "title": "Meihe Villa Spring Festival Exhibition 2024",
+      "title_zh": "梅鶴山莊過新年特展 2024",
+      "slug": "spring-festival-exhibition-2024",
+      "summary": "Experience traditional Lunar New Year celebrations at the historic Meihe Villa.",
+      "summary_zh": "在歷史悠久的梅鶴山莊體驗傳統農曆新年慶典。",
+      "content": "The annual Spring Festival exhibition at Meihe Villa showcases traditional Lunar New Year customs and the history of the Lin family during the festive season. Visitors can experience traditional decorations, cultural performances, and learn about how the Lin family celebrated the new year over 150 years ago.",
+      "content_zh": "梅鶴山莊年度過年特展展示傳統農曆新年習俗，以及林家在節慶期間的歷史。遊客可以體驗傳統裝飾、文化表演，並了解林家150多年前如何慶祝新年。",
+      "featured_image": "/images/news/news-1.jpg",
+      "category": "event",
+      "is_published": true,
+      "published_at": "2024-01-15T00:00:00"
+    },
+    {
+      "title": "Restoration Phase 2 & 3 Completed",
+      "title_zh": "第二、三期修復工程完工",
+      "slug": "restoration-phase-2-3-completed",
+      "summary": "The second and third phases of restoration focusing on the left and right protective wings have been completed.",
+      "summary_zh": "以左、右二護龍為主的第二、三期修復工程已完工。",
+      "content": "After two years of careful restoration work supported by the Ministry of Culture, the second and third phases of Meihe Villa's restoration have been completed in August 2021. The restoration focused on the left and right protective wings (護龍), using traditional techniques to restore the traditional tile roofing and lime plaster walls.",
+      "content_zh": "在文化部的支持下，經過兩年的精心修復，梅鶴山莊第二、三期修復工程於2021年8月完工。修復工程主要針對左、右二護龍，採用傳統工法復原板瓦屋面及白灰粉刷。",
+      "featured_image": "/images/news/news-2.jpg",
+      "category": "announcement",
+      "is_published": true,
+      "published_at": "2021-08-15T00:00:00"
+    },
+    {
+      "title": "Meihe Villa Now Open for Guided Tours",
+      "title_zh": "梅鶴山莊開放預約導覽",
+      "slug": "guided-tours-available",
+      "summary": "Experience the historic Meihe Villa with our expert-guided tours. Reservation required.",
+      "summary_zh": "透過專業導覽體驗歷史悠久的梅鶴山莊。需事先預約。",
+      "content": "Following the completion of restoration work, Meihe Villa is now open for guided tours. Visitors can explore the traditional Minnan architecture, learn about the Lin family history, and discover the cultural significance of this 150-year-old heritage site. Please contact us in advance to make a reservation.",
+      "content_zh": "修復工程完成後，梅鶴山莊現已開放導覽參觀。遊客可以探索傳統閩南建築、了解林家歷史，並發現這座150年歷史建築的文化意義。請提前聯繫我們預約。",
+      "featured_image": "/images/news/news-3.jpg",
+      "category": "announcement",
+      "is_published": true,
+      "published_at": "2021-09-01T00:00:00"
+    },
+    {
+      "title": "Mayor Cheng Inspects Meihe Villa Restoration Project",
+      "title_zh": "視察歷史建築「大溪林宅梅鶴山莊」修復工程 鄭市長：搭配大溪木博館，成為大溪社區文化旅行景點",
+      "slug": "mayor-inspects-meihe-villa-restoration-2016",
+      "summary": "Mayor Cheng Wen-tsan visited Meihe Villa to inspect the Phase 1 restoration project, with plans to integrate it with the Daxi Wood Art Ecomuseum.",
+      "summary_zh": "桃園市長鄭文燦視察歷史建築「大溪林宅梅鶴山莊」修復工程，該修復工程第一期預計於今（105）年底完成，將搭配大溪木藝生態博物館，成為大溪社區文化旅行的景點。",
+      "content": "Taoyuan Mayor Cheng Wen-tsan visited Daxi District on November 15, 2016 to inspect the restoration of the historic Meihe Villa. The Phase 1 restoration project, with a budget of approximately NT$35.76 million, is expected to be completed by the end of 2016. The city government plans to display historical artifacts from Daxi's past and integrate the villa with the Daxi Wood Art Ecomuseum to create a cultural tourism destination.\n\nMayor Cheng noted that Daxi is the starting point of Taoyuan's history, featuring important cultural assets including Daxi Old Street, Meihe Villa, Li Teng-fang Historic House, and Zhai Ming Temple. The Lin Ben-yuan family (Banqiao Lin family) developed the Taoyuan area from Daxi, and Lin Deng-yun built Meihe Villa in 1869 while serving as estate manager.\n\nThe distinctive architecture features a two-hall, four-wing layout with seven-bay wide main hall, beautiful paintings and wood carvings that showcase traditional craftsmanship. The restoration follows the principle of 'restoring the old as old' using original materials and techniques.\n\nSource: [Taoyuan City Government News](https://www.tycg.gov.tw/NewsPage_Content.aspx?n=10&s=635376)\n\n## Photo Gallery\n\n![Photo 1](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594822.jpg)\n![Photo 2](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594823.jpg)\n![Photo 3](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594824.jpg)\n![Photo 4](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594825.jpg)\n![Photo 5](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594826.jpg)\n![Photo 6](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594827.jpg)\n![Photo 7](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594828.jpg)\n![Photo 8](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594829.jpg)\n![Photo 9](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594830.jpg)\n![Photo 10](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594831.jpg)",
+      "content_zh": "桃園市長鄭文燦今（15）日下午前往大溪區視察歷史建築「大溪林宅梅鶴山莊」修復工程，鄭市長表示，該修復工程第一期工程經費約3,576萬元，預計於今（105）年底完成。市府將在此展出大溪過往的歷史文物，並搭配大溪木藝生態博物館，成為大溪社區文化旅行的景點。\n\n鄭市長說，大溪是桃園歷史的起點，有大溪老街、頭寮林宅梅鶴山莊、李騰芳古宅以及齋明寺等重要文化資產。林本源家族（板橋林家）因漳泉械鬥，而以大溪為根據地全面性開發桃園，包括大園及新屋等地區；當時林登雲擔任大嵙崁租館管事，於清末時期（1869年，清同治8年）興建梅鶴山莊。\n\n梅鶴山莊建築特色為二落四護龍，正身面寬七開間，彩繪及木雕裝飾優美且具傳統性，不但見證地方發展史，更突顯建築工藝的保存價值。第一期修復工程採「修舊如舊」的原則，除了安全的考量外，也利用原有的材料及工法，保留原有的風格。\n\n資料來源：[桃園市政府新聞](https://www.tycg.gov.tw/NewsPage_Content.aspx?n=10&s=635376)\n\n## 相關圖片\n\n![照片 1](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594822.jpg)\n![照片 2](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594823.jpg)\n![照片 3](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594824.jpg)\n![照片 4](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594825.jpg)\n![照片 5](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594826.jpg)\n![照片 6](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594827.jpg)\n![照片 7](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594828.jpg)\n![照片 8](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594829.jpg)\n![照片 9](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594830.jpg)\n![照片 10](https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594831.jpg)",
+      "featured_image": "https://d3e6xq549z85ve.cloudfront.net/images/news/mayor-inspection-2016/S__34594822.jpg",
+      "category": "announcement",
+      "is_published": true,
+      "published_at": "2016-11-15T00:00:00"
+    }
+  ],
+  "visit_info": [
+    {
+      "section": "hours",
+      "title": "Opening Hours",
+      "title_zh": "開放時間",
+      "content": "Meihe Villa is open for guided tours by appointment only. Please contact us at least one week in advance to schedule your visit.",
+      "content_zh": "梅鶴山莊採預約制開放導覽參觀。請至少提前一週聯繫我們安排您的參訪。",
+      "extra_data": "{\"note\": \"By appointment only\", \"note_zh\": \"僅接受預約\"}",
+      "display_order": 1
+    },
+    {
+      "section": "tickets",
+      "title": "Admission",
+      "title_zh": "門票資訊",
+      "content": "Admission is free. Donations to support preservation efforts are welcome.",
+      "content_zh": "免費入場。歡迎捐款支持文化資產保存工作。",
+      "extra_data": "{\"price\": \"Free\", \"price_zh\": \"免費\"}",
+      "display_order": 2
+    },
+    {
+      "section": "transport",
+      "title": "Transportation",
+      "title_zh": "交通方式",
+      "content": "By Car: Take National Highway 3 to Daxi Interchange, then follow signs toward Cihu. The villa is located about 10 minutes from the interchange.\n\nBy Public Transit: Take Taoyuan Bus toward Cihu and get off at Touliao Station. Walk approximately 10 minutes to reach the villa.",
+      "content_zh": "自行開車：國道三號大溪交流道下，往慈湖方向，約10分鐘可達。\n\n大眾運輸：搭乘桃園客運往慈湖方向班車，於頭寮站下車，步行約10分鐘可達。",
+      "extra_data": "{\"parking\": \"Limited parking available nearby\", \"parking_zh\": \"附近有限停車位\"}",
+      "display_order": 3
+    },
+    {
+      "section": "contact",
+      "title": "Contact Information",
+      "title_zh": "聯絡資訊",
+      "content": "For tour reservations and inquiries, please contact the Taoyuan City Cultural Affairs Bureau or the Daxi Wood Art Ecomuseum.",
+      "content_zh": "如需預約導覽或有任何詢問，請聯繫桃園市政府文化局或大溪木藝生態博物館。",
+      "extra_data": "{\"phone\": \"03-332-2592\", \"museum_phone\": \"03-388-8600\", \"address\": \"桃園市大溪區福安里頭寮一號\"}",
+      "display_order": 4
+    },
+    {
+      "section": "rules",
+      "title": "Visitor Guidelines",
+      "title_zh": "參觀須知",
+      "content": "Please respect this historic site and its current residents. Photography is permitted in designated areas only. No smoking, food, or beverages inside the buildings.",
+      "content_zh": "請尊重這座歷史建築及現居住戶。僅限於指定區域拍照。建築物內禁止吸菸、飲食。",
+      "extra_data": "{\"rules\": [\"No smoking\", \"No food or drinks\", \"Photography in designated areas only\"], \"rules_zh\": [\"禁止吸菸\", \"禁止飲食\", \"僅限指定區域拍照\"]}",
+      "display_order": 5
+    }
+  ],
+  "timeline_events": [
+    {
+      "year": 1804,
+      "era": "清嘉慶",
+      "era_year": "嘉慶9年",
+      "title": "Lin Bangxing Arrives in Taiwan",
+      "title_zh": "林邦興來台",
+      "description": "Lin Bangxing, the ancestor of the Meihe Lin family, arrives in Taiwan from Fujian Province.",
+      "description_zh": "梅鶴林家開台祖林邦興從福建來台。",
+      "category": "cultural",
+      "importance": "major"
+    },
+    {
+      "year": 1815,
+      "era": "清嘉慶",
+      "era_year": "嘉慶20年",
+      "title": "Lin Dengyun Born",
+      "title_zh": "林登雲出生",
+      "description": "Lin Dengyun (Lin Qihai), the founder of Meihe Villa, is born.",
+      "description_zh": "梅鶴山莊創建者林登雲（字圻海）出生。",
+      "category": "cultural",
+      "importance": "major"
+    },
+    {
+      "year": 1818,
+      "era": "清嘉慶",
+      "era_year": "嘉慶23年",
+      "title": "Lin Ben-yuan Family Enters Daxi",
+      "title_zh": "林本源家族進入大溪",
+      "description": "The Lin Ben-yuan family begins development in the Daxi area.",
+      "description_zh": "林本源家族進入大嵙崁（大溪）開發。",
+      "category": "cultural",
+      "importance": "normal"
+    },
+    {
+      "year": 1869,
+      "era": "清同治",
+      "era_year": "同治8年",
+      "title": "Meihe Villa Construction",
+      "title_zh": "梅鶴山莊興建",
+      "description": "Lin Dengyun purchases land from the Lin Ben-yuan family and constructs the villa, originally named 'Rongfeng Di' (榮封第).",
+      "description_zh": "林登雲向林本源家族購買土地，興建「榮封第」（今梅鶴山莊）。",
+      "category": "construction",
+      "importance": "major"
+    },
+    {
+      "year": 1873,
+      "era": "清同治",
+      "era_year": "同治12年",
+      "title": "Zhai Ming Tang Donation",
+      "title_zh": "捐建齋明堂",
+      "description": "Lin Dengyun donates to help build Zhai Ming Tang, the predecessor of today's Zhai Ming Temple.",
+      "description_zh": "林登雲捐獻興建齋明堂（今齋明寺前身）。",
+      "category": "cultural",
+      "importance": "normal"
+    },
+    {
+      "year": 1875,
+      "era": "清光緒",
+      "era_year": "光緒元年",
+      "title": "Lin Dengyun Awarded Fifth Rank",
+      "title_zh": "林登雲獲封五品大夫",
+      "description": "At age 61, Lin Dengyun is awarded the title of Fifth-Rank Official (五品大夫) by the Qing court.",
+      "description_zh": "林登雲61歲時上奏清廷捐納同知，獲封五品大夫。",
+      "category": "cultural",
+      "importance": "major"
+    },
+    {
+      "year": 1888,
+      "era": "清光緒",
+      "era_year": "光緒14年",
+      "title": "Lin Dengyun Passes Away",
+      "title_zh": "林登雲逝世",
+      "description": "Lin Dengyun passes away at the age of 73.",
+      "description_zh": "林登雲逝世，享年73歲。",
+      "category": "cultural",
+      "importance": "normal"
+    },
+    {
+      "year": 1923,
+      "era": "日治",
+      "era_year": "大正12年",
+      "title": "Villa Renamed 'Meihe Villa'",
+      "title_zh": "更名為「梅鶴山莊」",
+      "description": "Daxi scholar Zheng Yongnan renames the residence 'Meihe Villa' after the Song Dynasty hermit Lin Hejing's 'plum blossoms as wife, cranes as children' (梅妻鶴子).",
+      "description_zh": "大溪文人鄭永南以北宋隱士林和靖「梅妻鶴子」典故，將「榮封第」題名為「梅鶴山莊」。",
+      "category": "cultural",
+      "importance": "major"
+    },
+    {
+      "year": 1927,
+      "era": "日治",
+      "era_year": "昭和2年",
+      "title": "Le Bin She Music Group Founded",
+      "title_zh": "樂豳社創立",
+      "description": "The Lin family of Meihe Villa founds the Le Bin She (樂豳社), a traditional Beiguan music group.",
+      "description_zh": "梅鶴山莊林家族人創立北管樂團「樂豳社」。",
+      "category": "cultural",
+      "importance": "normal"
+    },
+    {
+      "year": 2004,
+      "era": "民國",
+      "era_year": "民國93年",
+      "title": "Registered as Historic Building",
+      "title_zh": "登錄為歷史建築",
+      "description": "Meihe Villa is officially registered as a historic building by the Taoyuan County Government.",
+      "description_zh": "梅鶴山莊登錄為桃園縣（今桃園市）歷史建築。",
+      "category": "political",
+      "importance": "major"
+    },
+    {
+      "year": 2016,
+      "era": "民國",
+      "era_year": "民國105年",
+      "title": "Phase 1 Restoration Complete",
+      "title_zh": "第一期修復完成",
+      "description": "The first phase of restoration, focusing on the main hall, is completed.",
+      "description_zh": "第一期正身修復（含上、下堂）完成。",
+      "category": "restoration",
+      "importance": "major"
+    },
+    {
+      "year": 2018,
+      "era": "民國",
+      "era_year": "民國107年",
+      "title": "Lin Family Clan Association Established",
+      "title_zh": "族親會成立",
+      "description": "The 'Taoyuan Daxi Lin Family Meihe Villa Clan Association' is officially registered with the Taoyuan Cultural Affairs Bureau.",
+      "description_zh": "桃園市文化局立案成立「桃園市大溪林家梅鶴山莊族親會」。",
+      "category": "cultural",
+      "importance": "normal"
+    },
+    {
+      "year": 2021,
+      "month": 8,
+      "era": "民國",
+      "era_year": "民國110年",
+      "title": "Phase 2 & 3 Restoration Complete",
+      "title_zh": "第二、三期修復完工",
+      "description": "The second and third phases of restoration, focusing on the left and right protective wings, are completed with support from the Ministry of Culture.",
+      "description_zh": "獲中央文化部補助的第二、三期修復工程完工，修復範圍以左、右二護龍為主。",
+      "category": "restoration",
+      "importance": "major"
+    }
+  ]
+}
