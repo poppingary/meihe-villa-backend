@@ -22,6 +22,8 @@ from app.models.heritage import HeritageCategory, HeritageSite
 from app.models.news import News
 from app.models.visit_info import VisitInfo
 from app.models.timeline import TimelineEvent
+from app.models.user import User
+from app.core.security import get_password_hash
 
 
 async def load_seed_data() -> dict:
@@ -170,6 +172,35 @@ async def seed_visit_info(session: AsyncSession, visit_info_list: list[dict]) ->
         print(f"  Created visit info '{info_data['section']}' (id={info.id})")
 
 
+async def seed_admin_user(session: AsyncSession) -> None:
+    """Seed default admin user."""
+    # Default admin credentials
+    admin_email = "admin@meihe.com"
+    admin_password = "meihe2024"
+    admin_name = "Admin"
+
+    # Check if admin user already exists
+    result = await session.execute(
+        select(User).where(User.email == admin_email)
+    )
+    existing = result.scalar_one_or_none()
+
+    if existing:
+        print(f"  Admin user '{admin_email}' already exists (id={existing.id})")
+        return
+
+    user = User(
+        email=admin_email,
+        password_hash=get_password_hash(admin_password),
+        name=admin_name,
+        is_active=True,
+    )
+    session.add(user)
+    await session.flush()
+    print(f"  Created admin user '{admin_email}' (id={user.id})")
+    print(f"  Password: {admin_password}")
+
+
 async def seed_timeline(session: AsyncSession, events_list: list[dict]) -> None:
     """Seed timeline events."""
     for event_data in events_list:
@@ -243,6 +274,10 @@ async def main():
             # Seed timeline
             print("\nSeeding timeline events...")
             await seed_timeline(session, seed_data.get("timeline_events", []))
+
+            # Seed admin user
+            print("\nSeeding admin user...")
+            await seed_admin_user(session)
 
             # Commit all changes
             await session.commit()
