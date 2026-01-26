@@ -16,6 +16,7 @@ class NewsBase(BaseModel):
     content: str | None = None
     content_zh: str | None = None
     featured_image: str | None = None
+    images: str | None = None  # JSON array of image URLs
     category: str | None = None
     is_published: bool = False
     published_at: datetime | None = None
@@ -38,6 +39,7 @@ class NewsUpdate(BaseModel):
     content: str | None = None
     content_zh: str | None = None
     featured_image: str | None = None
+    images: str | None = None
     category: str | None = None
     is_published: bool | None = None
     published_at: datetime | None = None

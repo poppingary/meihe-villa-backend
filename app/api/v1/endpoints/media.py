@@ -1,11 +1,13 @@
 """Media files API endpoints."""
 
+import logging
 import math
 
 from fastapi import APIRouter, HTTPException, status
 from sqlalchemy import func, select
 
 from app.api.deps import CurrentUserFromCookie, DbSession
+from app.core.s3 import delete_s3_object
 from app.models.media import MediaFile
 from app.schemas.media import (
     MediaFileCreate,
@@ -13,6 +15,8 @@ from app.schemas.media import (
     MediaFileResponse,
     MediaFileUpdate,
 )
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
@@ -133,11 +137,7 @@ async def delete_media_file(
     _: CurrentUserFromCookie,
     media_id: int,
 ):
-    """Delete a media file record.
-
-    Note: This only deletes the database record.
-    The actual S3 file should be deleted separately or via a cleanup job.
-    """
+    """Delete a media file record and its S3 object."""
     query = select(MediaFile).where(MediaFile.id == media_id)
     result = await db.execute(query)
     media = result.scalar_one_or_none()
@@ -148,6 +148,43 @@ async def delete_media_file(
             detail="Media file not found",
         )
 
+    # Delete from S3
+    if media.s3_key:
+        s3_deleted = await delete_s3_object(media.s3_key)
+        if not s3_deleted:
+            logger.warning(f"Failed to delete S3 object: {media.s3_key}")
+
+    # Delete from database
+    await db.delete(media)
+
+
+@router.delete("/by-url/delete", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_media_by_url(
+    db: DbSession,
+    _: CurrentUserFromCookie,
+    url: str,
+):
+    """Delete a media file by its public URL.
+
+    This endpoint is useful when you only have the URL (e.g., from a form field)
+    and need to delete the corresponding media file and S3 object.
+    """
+    query = select(MediaFile).where(MediaFile.public_url == url)
+    result = await db.execute(query)
+    media = result.scalar_one_or_none()
+
+    if not media:
+        # Media record not found - this could be an external URL or already deleted
+        # Just return success since the goal is to remove the file
+        return
+
+    # Delete from S3
+    if media.s3_key:
+        s3_deleted = await delete_s3_object(media.s3_key)
+        if not s3_deleted:
+            logger.warning(f"Failed to delete S3 object: {media.s3_key}")
+
+    # Delete from database
     await db.delete(media)
 
 

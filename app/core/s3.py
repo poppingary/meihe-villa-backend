@@ -148,6 +148,34 @@ async def generate_presigned_download_url(s3_key: str) -> str:
     return url
 
 
+async def delete_s3_object(s3_key: str) -> bool:
+    """Delete an object from S3.
+
+    Args:
+        s3_key: The S3 key of the object to delete
+
+    Returns:
+        True if deletion was successful, False otherwise
+    """
+    settings = get_settings()
+
+    session = aioboto3.Session(
+        aws_access_key_id=settings.aws_access_key_id,
+        aws_secret_access_key=settings.aws_secret_access_key,
+        region_name=settings.aws_region,
+    )
+
+    try:
+        async with session.client("s3") as s3:
+            await s3.delete_object(
+                Bucket=settings.s3_bucket_name,
+                Key=s3_key,
+            )
+        return True
+    except Exception:
+        return False
+
+
 def get_allowed_types_info() -> dict:
     """Get information about allowed file types and size limits."""
     return {

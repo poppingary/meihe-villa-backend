@@ -99,4 +99,46 @@ async def get_current_user_from_cookie(
     return user
 
 
+async def get_superadmin_user(
+    request: Request,
+    db: AsyncSession = Depends(get_db),
+):
+    """Get current user and verify they are a superadmin."""
+    from app.models.user import User, UserRole
+
+    token = request.cookies.get(COOKIE_NAME)
+    if not token:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Not authenticated",
+        )
+
+    payload = verify_token(token)
+    if not payload:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid token",
+        )
+
+    user_id = payload.get("sub")
+    query = select(User).where(User.id == user_id)
+    result = await db.execute(query)
+    user = result.scalar_one_or_none()
+
+    if not user or not user.is_active:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="User not found or inactive",
+        )
+
+    if user.role != UserRole.SUPERADMIN:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Superadmin access required",
+        )
+
+    return user
+
+
 CurrentUserFromCookie = Annotated[object, Depends(get_current_user_from_cookie)]
+SuperAdminUser = Annotated[object, Depends(get_superadmin_user)]

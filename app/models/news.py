@@ -26,6 +26,7 @@ class News(Base):
 
     # Media
     featured_image: Mapped[str | None] = mapped_column(String(500))
+    images: Mapped[str | None] = mapped_column(Text)  # JSON array of image URLs
 
     # Metadata
     category: Mapped[str | None] = mapped_column(String(50))  # announcement, event, update
