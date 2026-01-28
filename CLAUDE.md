@@ -43,6 +43,8 @@ backend/
 ├── alembic/              # Database migrations
 ├── scripts/              # Utility scripts
 │   ├── create_admin.py   # Create admin user
+│   ├── seed_db.py        # Seed database with initial data
+│   ├── seed_data.json    # Seed data (source of truth)
 │   └── sync_s3_media.py  # Sync S3 files to database
 ├── tests/                # Test files
 ├── Dockerfile
@@ -62,10 +64,10 @@ uv sync
 uv sync --all-extras
 
 # Run development server
-uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8888
 
 # Access API docs
-open http://localhost:8000/docs
+open http://localhost:8888/docs
 
 # Add a new dependency
 uv add <package>
@@ -96,6 +98,26 @@ uv run python scripts/create_admin.py <email> <password> <name>
 # Example
 uv run python scripts/create_admin.py admin@example.com mypassword "Admin User"
 ```
+
+### Database Seeding
+
+```bash
+# Seed all data (upsert mode - updates existing, inserts new)
+uv run python scripts/seed_db.py
+
+# Seed specific tables only
+uv run python scripts/seed_db.py --tables categories,sites,visit_info
+
+# Reset and reseed (WARNING: deletes existing data first)
+uv run python scripts/seed_db.py --reset
+
+# Dry run (show what would be done without making changes)
+uv run python scripts/seed_db.py --dry-run
+```
+
+Available tables: `categories`, `sites`, `visit_info`, `timeline`, `news`, `media`
+
+Seed data is stored in `scripts/seed_data.json`.
 
 ### Media Sync
 
@@ -281,6 +303,30 @@ s3://meihe-villa-media/
 │   └── gallery/
 └── videos/
 ```
+
+## Data Formats
+
+### VisitInfo extra_data (Bilingual Key-Value Pairs)
+
+The `extra_data` field in VisitInfo stores bilingual key-value pairs as JSON. Keys are display labels, not variable names.
+
+**Format:**
+- Chinese keys: No suffix (e.g., `電話`, `地址`)
+- English keys: `_en` suffix (e.g., `phone_en`, `address_en`)
+
+**Example:**
+```json
+{
+  "電話": "03-332-2592",
+  "地址": "335桃園市大溪區福安里頭寮一路111號",
+  "phone_en": "03-332-2592",
+  "address_en": "No. 111, Touliao 1st Road, Daxi District, Taoyuan City 335, Taiwan"
+}
+```
+
+**Frontend Display:**
+- Chinese tab: Shows keys without `_en` suffix (`電話`, `地址`)
+- English tab: Shows keys with `_en` suffix stripped (`phone`, `address`)
 
 ## Development Notes
 
