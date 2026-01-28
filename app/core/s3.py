@@ -148,6 +148,65 @@ async def generate_presigned_download_url(s3_key: str) -> str:
     return url
 
 
+async def copy_s3_object(old_key: str, new_key: str) -> bool:
+    """Copy an S3 object to a new key.
+
+    Args:
+        old_key: The current S3 key
+        new_key: The destination S3 key
+
+    Returns:
+        True if copy was successful, False otherwise
+    """
+    settings = get_settings()
+
+    session = aioboto3.Session(
+        aws_access_key_id=settings.aws_access_key_id,
+        aws_secret_access_key=settings.aws_secret_access_key,
+        region_name=settings.aws_region,
+    )
+
+    try:
+        async with session.client("s3") as s3:
+            await s3.copy_object(
+                Bucket=settings.s3_bucket_name,
+                CopySource={"Bucket": settings.s3_bucket_name, "Key": old_key},
+                Key=new_key,
+            )
+        return True
+    except Exception:
+        return False
+
+
+async def rename_s3_object(old_key: str, new_filename: str) -> str | None:
+    """Rename an S3 object by copying to a new key and deleting the old one.
+
+    Args:
+        old_key: The current S3 key
+        new_filename: The new filename (just the name, not the full path)
+
+    Returns:
+        The new S3 key if successful, None otherwise
+    """
+    # Build new key: same prefix path, new filename
+    parts = old_key.rsplit("/", 1)
+    if len(parts) == 2:
+        prefix = parts[0]
+        new_key = f"{prefix}/{new_filename}"
+    else:
+        new_key = new_filename
+
+    if new_key == old_key:
+        return old_key
+
+    copied = await copy_s3_object(old_key, new_key)
+    if not copied:
+        return None
+
+    await delete_s3_object(old_key)
+    return new_key
+
+
 async def delete_s3_object(s3_key: str) -> bool:
     """Delete an object from S3.
 

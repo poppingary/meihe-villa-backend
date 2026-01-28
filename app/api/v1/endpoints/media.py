@@ -7,7 +7,7 @@ from fastapi import APIRouter, HTTPException, status
 from sqlalchemy import func, select
 
 from app.api.deps import CurrentUserFromCookie, DbSession
-from app.core.s3 import delete_s3_object
+from app.core.s3 import delete_s3_object, get_public_url, rename_s3_object
 from app.models.media import MediaFile
 from app.schemas.media import (
     MediaFileCreate,
@@ -123,6 +123,27 @@ async def update_media_file(
         )
 
     update_data = media_in.model_dump(exclude_unset=True)
+
+    # Handle rename: update S3 key, public_url, filename, original_filename
+    if "original_filename" in update_data and update_data["original_filename"]:
+        new_filename = update_data["original_filename"]
+        # Make filename safe
+        safe_filename = new_filename.replace(" ", "-")
+
+        new_key = await rename_s3_object(media.s3_key, safe_filename)
+        if new_key is None:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Failed to rename file in storage",
+            )
+
+        media.s3_key = new_key
+        media.public_url = get_public_url(new_key)
+        media.filename = safe_filename
+        media.original_filename = new_filename
+        # Remove from update_data so it's not set again
+        del update_data["original_filename"]
+
     for field, value in update_data.items():
         setattr(media, field, value)
 

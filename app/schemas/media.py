@@ -32,7 +32,7 @@ class MediaFileCreate(MediaFileBase):
 class MediaFileUpdate(MediaFileBase):
     """Schema for updating media file metadata."""
 
-    pass
+    original_filename: str | None = None
 
 
 class MediaFileResponse(MediaFileBase):
