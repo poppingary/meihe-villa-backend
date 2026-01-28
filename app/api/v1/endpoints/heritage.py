@@ -109,7 +109,8 @@ async def update_heritage_site(
         setattr(site, field, value)
 
     await db.flush()
-    await db.refresh(site, attribute_names=["category"])
+    # Refresh all attributes including updated_at and category
+    await db.refresh(site)
     return site
 
 

@@ -1,5 +1,6 @@
 """API dependencies for dependency injection."""
 
+import uuid as uuid_module
 from collections.abc import AsyncGenerator
 from typing import Annotated
 
@@ -85,7 +86,21 @@ async def get_current_user_from_cookie(
             detail="Invalid token",
         )
 
-    user_id = payload.get("sub")
+    user_id_str = payload.get("sub")
+    if not user_id_str:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid token payload",
+        )
+
+    try:
+        user_id = uuid_module.UUID(user_id_str)
+    except (ValueError, TypeError):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid token payload",
+        )
+
     query = select(User).where(User.id == user_id)
     result = await db.execute(query)
     user = result.scalar_one_or_none()
@@ -120,7 +135,21 @@ async def get_superadmin_user(
             detail="Invalid token",
         )
 
-    user_id = payload.get("sub")
+    user_id_str = payload.get("sub")
+    if not user_id_str:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid token payload",
+        )
+
+    try:
+        user_id = uuid_module.UUID(user_id_str)
+    except (ValueError, TypeError):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid token payload",
+        )
+
     query = select(User).where(User.id == user_id)
     result = await db.execute(query)
     user = result.scalar_one_or_none()
