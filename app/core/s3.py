@@ -3,9 +3,26 @@
 import uuid
 from datetime import datetime
 
+import logging
+
 import aioboto3
 
 from app.config import get_settings
+
+logger = logging.getLogger(__name__)
+
+
+def _create_s3_session() -> aioboto3.Session:
+    """Create an aioboto3 session, using explicit credentials if available,
+    otherwise falling back to the default credential chain (e.g. IAM instance role)."""
+    settings = get_settings()
+    if settings.aws_access_key_id and settings.aws_secret_access_key:
+        return aioboto3.Session(
+            aws_access_key_id=settings.aws_access_key_id,
+            aws_secret_access_key=settings.aws_secret_access_key,
+            region_name=settings.aws_region,
+        )
+    return aioboto3.Session(region_name=settings.aws_region)
 
 # Allowed content types and their categories
 ALLOWED_IMAGE_TYPES = {
@@ -97,11 +114,7 @@ async def generate_presigned_upload_url(
     max_size = get_max_size_for_type(content_type)
 
     # Create S3 session
-    session = aioboto3.Session(
-        aws_access_key_id=settings.aws_access_key_id,
-        aws_secret_access_key=settings.aws_secret_access_key,
-        region_name=settings.aws_region,
-    )
+    session = _create_s3_session()
 
     # Generate pre-signed URL
     async with session.client("s3") as s3:
@@ -128,12 +141,7 @@ async def generate_presigned_upload_url(
 async def generate_presigned_download_url(s3_key: str) -> str:
     """Generate a pre-signed URL for downloading a private S3 object."""
     settings = get_settings()
-
-    session = aioboto3.Session(
-        aws_access_key_id=settings.aws_access_key_id,
-        aws_secret_access_key=settings.aws_secret_access_key,
-        region_name=settings.aws_region,
-    )
+    session = _create_s3_session()
 
     async with session.client("s3") as s3:
         url = await s3.generate_presigned_url(
@@ -159,12 +167,7 @@ async def copy_s3_object(old_key: str, new_key: str) -> bool:
         True if copy was successful, False otherwise
     """
     settings = get_settings()
-
-    session = aioboto3.Session(
-        aws_access_key_id=settings.aws_access_key_id,
-        aws_secret_access_key=settings.aws_secret_access_key,
-        region_name=settings.aws_region,
-    )
+    session = _create_s3_session()
 
     try:
         async with session.client("s3") as s3:
@@ -175,8 +178,7 @@ async def copy_s3_object(old_key: str, new_key: str) -> bool:
             )
         return True
     except Exception as e:
-        import logging
-        logging.getLogger(__name__).error(f"Failed to copy S3 object {old_key} -> {new_key}: {e}")
+        logger.error(f"Failed to copy S3 object {old_key} -> {new_key}: {e}")
         return False
 
 
@@ -219,12 +221,7 @@ async def delete_s3_object(s3_key: str) -> bool:
         True if deletion was successful, False otherwise
     """
     settings = get_settings()
-
-    session = aioboto3.Session(
-        aws_access_key_id=settings.aws_access_key_id,
-        aws_secret_access_key=settings.aws_secret_access_key,
-        region_name=settings.aws_region,
-    )
+    session = _create_s3_session()
 
     try:
         async with session.client("s3") as s3:
