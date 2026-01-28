@@ -170,11 +170,13 @@ async def copy_s3_object(old_key: str, new_key: str) -> bool:
         async with session.client("s3") as s3:
             await s3.copy_object(
                 Bucket=settings.s3_bucket_name,
-                CopySource={"Bucket": settings.s3_bucket_name, "Key": old_key},
+                CopySource=f"{settings.s3_bucket_name}/{old_key}",
                 Key=new_key,
             )
         return True
-    except Exception:
+    except Exception as e:
+        import logging
+        logging.getLogger(__name__).error(f"Failed to copy S3 object {old_key} -> {new_key}: {e}")
         return False
 
 
