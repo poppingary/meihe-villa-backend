@@ -15,11 +15,13 @@ async def test_root(client):
 
 @pytest.mark.asyncio
 async def test_health(client):
-    """Test health check endpoint."""
+    """Test health check endpoint with database connectivity."""
     response = await client.get("/health")
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "healthy"
+    assert "checks" in data
+    assert data["checks"]["database"] == "connected"
 
 
 @pytest.mark.asyncio

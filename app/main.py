@@ -3,10 +3,13 @@
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import text
 
 from app.api.v1.router import api_router
 from app.config import get_settings
+from app.database import AsyncSessionLocal
 
 settings = get_settings()
 
@@ -43,8 +46,26 @@ app.include_router(api_router, prefix="/api/v1")
 
 @app.get("/health")
 async def health_check():
-    """Health check endpoint."""
-    return {"status": "healthy", "service": settings.app_name}
+    """Health check endpoint with database connectivity verification."""
+    health_status = {
+        "status": "healthy",
+        "service": settings.app_name,
+        "checks": {
+            "database": "unknown",
+        },
+    }
+
+    # Check database connectivity
+    try:
+        async with AsyncSessionLocal() as session:
+            await session.execute(text("SELECT 1"))
+            health_status["checks"]["database"] = "connected"
+    except Exception as e:
+        health_status["status"] = "unhealthy"
+        health_status["checks"]["database"] = f"error: {type(e).__name__}"
+        return JSONResponse(status_code=503, content=health_status)
+
+    return health_status
 
 
 @app.get("/")
