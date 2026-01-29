@@ -157,8 +157,13 @@ async def delete_media_file(
     db: DbSession,
     _: CurrentUserFromCookie,
     media_id: int,
+    db_only: bool = False,
 ):
-    """Delete a media file record and its S3 object."""
+    """Delete a media file record and optionally its S3 object.
+
+    Args:
+        db_only: If True, only delete the database record and keep the S3 file.
+    """
     query = select(MediaFile).where(MediaFile.id == media_id)
     result = await db.execute(query)
     media = result.scalar_one_or_none()
@@ -169,8 +174,8 @@ async def delete_media_file(
             detail="Media file not found",
         )
 
-    # Delete from S3
-    if media.s3_key:
+    # Delete from S3 (unless db_only)
+    if not db_only and media.s3_key:
         s3_deleted = await delete_s3_object(media.s3_key)
         if not s3_deleted:
             logger.warning(f"Failed to delete S3 object: {media.s3_key}")
