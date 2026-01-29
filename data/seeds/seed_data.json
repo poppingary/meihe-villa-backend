@@ -34,8 +34,8 @@
       "description_zh": "梅鶴山莊是一座建於1869年（清同治8年）的歷史建築，由林本源家族大嵙崁租館管事林登雲所建。1923年由大溪文人鄭永南以北宋隱士林和靖「梅妻鶴子」典故命名。2004年登錄為桃園市歷史建築。建築為傳統土造閩南式建築，格局為二落六護龍，正身面寬七開間，具有燕尾屋脊的門樓、精緻的彩繪、泥塑、剪黏與木雕裝飾，是大溪極負盛名的建築之一。",
       "history": "Meihe Villa was constructed in 1869 (Qing Dynasty, Tongzhi 8th year) by Lin Deng-yun (1815-1888), originally named 'Rongfeng Di' (榮封第). Lin Deng-yun was the estate manager for the renowned Lin Ben-yuan family of Banqiao. After the Lin Ben-yuan family relocated to Banqiao, Lin Deng-yun chose to stay in Daxi, establishing himself as a prominent local figure through various businesses including mines, rice mills, brick factories, tea gardens, and trading companies.\n\nIn 1875, at age 61, Lin Deng-yun was awarded the title of Fifth-Rank Official (五品大夫) by the Qing court after donating to become a Tongzhi (同知). The villa was strategically located facing the area where Atayal indigenous people entered and exited, requiring strong defensive features.\n\nIn 1923, the renowned Daxi scholar Zheng Yongnan renamed the residence 'Meihe Villa' (梅鶴山莊), drawing inspiration from the Song Dynasty hermit poet Lin Hejing (Lin Bu, 967-1028), who was famous for his reclusive lifestyle at West Lake's Gushan, keeping plum trees and cranes as companions, leading to the idiom 'plum blossoms as wife, cranes as children' (梅妻鶴子).\n\nThe Lin family has now passed down seven generations, with notable descendants including former Daxi Mayor Lin Xi-da and Zhu Lin-gui, mother of former Taoyuan County Magistrate Eric Chu. In 2018, the 'Taoyuan Daxi Lin Family Meihe Villa Clan Association' was officially registered with the Taoyuan Cultural Affairs Bureau.\n\nRestoration work began in 2016, with the main hall completed first. The second and third phases of restoration, focusing on the left and right protective wings, were completed in August 2021.",
       "history_zh": "梅鶴山莊由林登雲（字圻海，1815-1888）於清同治8年（1869年）興建，原名「榮封第」。林登雲祖籍福建漳州，原擔任林本源家族大嵙崁租館管事。林本源家族遷居板橋後，林登雲選擇在大溪定居，以「林本源商號總執事」為名號做生意，其後家業如雲，擁有礦場、米廠、磚廠、茶園、商號，成為大溪望族。\n\n1875年（光緒元年），林登雲61歲時上奏清廷捐納同知，獲封五品大夫，在前落門楣上掛「榮封第」匾額。建築選址面對泰雅族人進出的地點，具有挑戰性，需要家族團結合作，因此具有高度防禦性設計。\n\n1923年（大正12年），大溪文人鄭永南以北宋隱士林和靖「梅妻鶴子」典故，將「榮封第」題名為「梅鶴山莊」。林和靖（林逋，967-1028）為北宋著名詩人、隱士，一生不娶不仕，在杭州西湖孤山種梅養鶴，人稱「梅妻鶴子」。\n\n林家現已傳承七代，著名族人包括前大溪鎮長林熺達、前桃園縣長朱立倫之母朱林桂。2018年桃園市文化局立案成立「桃園市大溪林家梅鶴山莊族親會」。\n\n修復工程於2016年開始，第一期正身修復完成。第二、三期修復工程於2021年8月完工，修復範圍以左、右二護龍為主。",
-      "featured_image": "/images/hero/hero-main.jpg",
-      "images": "[\"/images/architecture/zhengmen.jpg\", \"/images/architecture/zhengting.jpg\", \"/images/architecture/yanwei.jpg\", \"/images/architecture/rongfeng-di.jpg\"]",
+      "featured_image": "https://d3e6xq549z85ve.cloudfront.net/images/hero/hero-main.jpg",
+      "images": "[\"https://d3e6xq549z85ve.cloudfront.net/images/architecture/zhengmen.jpg\", \"https://d3e6xq549z85ve.cloudfront.net/images/architecture/zhengting.jpg\", \"https://d3e6xq549z85ve.cloudfront.net/images/architecture/yanwei.jpg\", \"https://d3e6xq549z85ve.cloudfront.net/images/architecture/rongfeng-di.jpg\"]",
       "designation_level": "桃園市歷史建築",
       "designation_date": "2004-01-01",
       "is_published": true,
@@ -51,7 +51,7 @@
       "summary_zh": "在歷史悠久的梅鶴山莊體驗傳統農曆新年慶典。",
       "content": "The annual Spring Festival exhibition at Meihe Villa showcases traditional Lunar New Year customs and the history of the Lin family during the festive season. Visitors can experience traditional decorations, cultural performances, and learn about how the Lin family celebrated the new year over 150 years ago.",
       "content_zh": "梅鶴山莊年度過年特展展示傳統農曆新年習俗，以及林家在節慶期間的歷史。遊客可以體驗傳統裝飾、文化表演，並了解林家150多年前如何慶祝新年。",
-      "featured_image": "/images/news/news-1.jpg",
+      "featured_image": "https://d3e6xq549z85ve.cloudfront.net/images/news/news-1.jpg",
       "category": "event",
       "is_published": true,
       "published_at": "2024-01-15T00:00:00"
@@ -64,7 +64,7 @@
       "summary_zh": "以左、右二護龍為主的第二、三期修復工程已完工。",
       "content": "After two years of careful restoration work supported by the Ministry of Culture, the second and third phases of Meihe Villa's restoration have been completed in August 2021. The restoration focused on the left and right protective wings (護龍), using traditional techniques to restore the traditional tile roofing and lime plaster walls.",
       "content_zh": "在文化部的支持下，經過兩年的精心修復，梅鶴山莊第二、三期修復工程於2021年8月完工。修復工程主要針對左、右二護龍，採用傳統工法復原板瓦屋面及白灰粉刷。",
-      "featured_image": "/images/news/news-2.jpg",
+      "featured_image": "https://d3e6xq549z85ve.cloudfront.net/images/news/news-2.jpg",
       "category": "announcement",
       "is_published": true,
       "published_at": "2021-08-15T00:00:00"
@@ -77,7 +77,7 @@
       "summary_zh": "透過專業導覽體驗歷史悠久的梅鶴山莊。需事先預約。",
       "content": "Following the completion of restoration work, Meihe Villa is now open for guided tours. Visitors can explore the traditional Minnan architecture, learn about the Lin family history, and discover the cultural significance of this 150-year-old heritage site. Please contact us in advance to make a reservation.",
       "content_zh": "修復工程完成後，梅鶴山莊現已開放導覽參觀。遊客可以探索傳統閩南建築、了解林家歷史，並發現這座150年歷史建築的文化意義。請提前聯繫我們預約。",
-      "featured_image": "/images/news/news-3.jpg",
+      "featured_image": "https://d3e6xq549z85ve.cloudfront.net/images/news/news-3.jpg",
       "category": "announcement",
       "is_published": true,
       "published_at": "2021-09-01T00:00:00"

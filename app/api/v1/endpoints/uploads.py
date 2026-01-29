@@ -37,6 +37,7 @@ async def get_presigned_upload_url(
         result = await generate_presigned_upload_url(
             filename=request.filename,
             content_type=request.content_type,
+            folder=request.folder,
         )
         return PresignedUrlResponse(**result)
     except ValueError as e:
@@ -72,6 +73,7 @@ async def get_presigned_upload_urls(
             result = await generate_presigned_upload_url(
                 filename=file_req.filename,
                 content_type=file_req.content_type,
+                folder=file_req.folder,
             )
             urls.append(PresignedUrlResponse(**result))
         except ValueError as e:

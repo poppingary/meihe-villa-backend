@@ -66,7 +66,7 @@ def validate_content_type(content_type: str) -> bool:
     return content_type in ALLOWED_IMAGE_TYPES or content_type in ALLOWED_VIDEO_TYPES
 
 
-def generate_s3_key(filename: str, content_type: str) -> str:
+def generate_s3_key(filename: str, content_type: str, folder: str | None = None) -> str:
     """Generate a unique S3 key with date-based folder structure."""
     category = get_file_category(content_type)
     if not category:
@@ -76,6 +76,8 @@ def generate_s3_key(filename: str, content_type: str) -> str:
     unique_id = uuid.uuid4().hex[:8]
     safe_filename = filename.replace(" ", "-")
 
+    if folder:
+        return f"{category}/{folder}/{now.year}/{now.month:02d}/{unique_id}-{safe_filename}"
     return f"{category}/{now.year}/{now.month:02d}/{unique_id}-{safe_filename}"
 
 
@@ -94,6 +96,7 @@ def get_public_url(s3_key: str) -> str:
 async def generate_presigned_upload_url(
     filename: str,
     content_type: str,
+    folder: str | None = None,
 ) -> dict:
     """Generate a pre-signed URL for uploading a file to S3.
 
@@ -110,7 +113,7 @@ async def generate_presigned_upload_url(
         )
 
     # Generate S3 key
-    s3_key = generate_s3_key(filename, content_type)
+    s3_key = generate_s3_key(filename, content_type, folder=folder)
     max_size = get_max_size_for_type(content_type)
 
     # Create S3 session

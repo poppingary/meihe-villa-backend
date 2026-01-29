@@ -4,10 +4,9 @@
 This script scans the S3 bucket and creates MediaFile records
 for any files that don't already exist in the database.
 
-Only files under allowed prefixes are synced. By default only
-``images/gallery`` is included so that other page assets (hero,
-about, architecture, heritage, news …) don't pollute the media
-library.
+Only files under allowed prefixes are synced. By default all known
+page image folders are included (gallery, hero, heritage,
+architecture, news, about, visit).
 
 Usage:
     # Sync gallery images only (default)
@@ -37,7 +36,15 @@ from app.models.media import MediaFile
 
 settings = get_settings()
 
-DEFAULT_PREFIXES = ["images/gallery"]
+DEFAULT_PREFIXES = [
+    "images/gallery",
+    "images/hero",
+    "images/heritage",
+    "images/architecture",
+    "images/news",
+    "images/about",
+    "images/visit",
+]
 
 
 def get_content_type(key: str) -> str:
@@ -127,7 +134,9 @@ async def sync_s3_to_db(prefixes: list[str] | None = None, sync_all: bool = Fals
             content_type = get_content_type(key)
             category = get_category(content_type)
             filename = key.split("/")[-1]
-            folder = "/".join(key.split("/")[:-1]) if "/" in key else None
+            # Store logical folder as first two path segments (e.g. "images/gallery")
+            parts = key.split("/")
+            folder = "/".join(parts[:2]) if len(parts) >= 2 else None
 
             # Build public URL
             if cloudfront_domain:

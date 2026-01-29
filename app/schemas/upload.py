@@ -8,6 +8,7 @@ class PresignedUrlRequest(BaseModel):
 
     filename: str
     content_type: str
+    folder: str | None = None
 
 
 class PresignedUrlResponse(BaseModel):

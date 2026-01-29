@@ -38,14 +38,16 @@ backend/
 │   │       ├── media.py
 │   │       └── auth.py
 │   ├── core/             # Core utilities
-│   │   └── security.py   # JWT, password hashing
+│   │   ├── security.py   # JWT, password hashing
+│   │   └── s3.py         # S3 operations (upload, delete, rename, presigned URLs)
 │   └── crud/             # Database operations
 ├── alembic/              # Database migrations
 ├── scripts/              # Utility scripts
 │   ├── create_admin.py   # Create admin user
 │   ├── seed_db.py        # Seed database with initial data
 │   ├── seed_data.json    # Seed data (source of truth)
-│   └── sync_s3_media.py  # Sync S3 files to database
+│   ├── sync_s3_media.py  # Sync S3 files to database (gallery only by default)
+│   └── cleanup_non_gallery_media.py  # One-off: remove non-gallery media DB records
 ├── tests/                # Test files
 ├── Dockerfile
 ├── docker-compose.yml
@@ -122,8 +124,14 @@ Seed data is stored in `scripts/seed_data.json`.
 ### Media Sync
 
 ```bash
-# Sync existing S3 files to database
+# Sync all page image folders (default)
 uv run python scripts/sync_s3_media.py
+
+# Sync specific prefixes only
+uv run python scripts/sync_s3_media.py --prefix images/gallery --prefix images/news
+
+# Sync everything in the bucket
+uv run python scripts/sync_s3_media.py --all
 ```
 
 ### Testing
@@ -251,7 +259,10 @@ The `ENVIRONMENT` variable determines which bucket is used.
 | PATCH | `/api/v1/visit-info/{id}` | Update visit info |
 | DELETE | `/api/v1/visit-info/{id}` | Delete visit info |
 | POST | `/api/v1/media/upload` | Upload file to S3 |
-| DELETE | `/api/v1/media/{id}` | Delete media file |
+| PATCH | `/api/v1/media/{id}` | Update media metadata (rename file) |
+| DELETE | `/api/v1/media/{id}` | Delete media file (S3 + DB) |
+| DELETE | `/api/v1/media/{id}?db_only=true` | Delete DB record only (keep S3) |
+| DELETE | `/api/v1/media/by-url/delete?url=...` | Delete media by public URL |
 
 ## Authentication
 
@@ -293,14 +304,27 @@ Media files are uploaded to S3 and served via CloudFront CDN:
 3. Backend saves metadata to database (MediaFile model)
 4. CloudFront URL is returned for display
 
-### Media File Structure
+### Media Library Scope
+
+The `media_files` DB table tracks **all page images** across all folders. Each media record has a `folder` field storing the logical folder (first two S3 path segments, e.g. `images/gallery`, `images/news`).
+
+- **All page images** → managed via media library (DB + S3), classified by folder
+- Available folders: `images/gallery`, `images/hero`, `images/heritage`, `images/architecture`, `images/news`, `images/about`, `images/visit`
+
+The `sync_s3_media.py` script syncs all known page image folders by default.
+
+### S3 File Structure
 
 ```
 s3://meihe-villa-media/
 ├── images/
-│   ├── heritage/
-│   ├── news/
-│   └── gallery/
+│   ├── gallery/        # ← managed by media library
+│   ├── heritage/       # referenced by heritage sites
+│   ├── news/           # referenced by news articles
+│   ├── architecture/   # referenced by architecture pages
+│   ├── about/          # referenced by about page
+│   ├── hero/           # referenced by homepage hero
+│   └── visit/          # referenced by visit info
 └── videos/
 ```
 
@@ -334,4 +358,6 @@ The `extra_data` field in VisitInfo stores bilingual key-value pairs as JSON. Ke
 - Pydantic schemas in `/app/schemas/` match frontend TypeScript interfaces
 - All dates are stored in UTC
 - Images should include `width` and `height` metadata when possible
-- The `sync_s3_media.py` script can populate the database from existing S3 files
+- The `sync_s3_media.py` script syncs S3 gallery files to the media DB (use `--all` for full bucket)
+- Media library only manages gallery images; other pages reference S3 URLs directly
+- Renaming a media file copies the S3 object to a new key and deletes the old one (no native S3 rename)
