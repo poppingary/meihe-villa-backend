@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 env:
   AWS_REGION: ap-northeast-1
@@ -94,7 +95,7 @@ jobs:
             docker stop meihe-villa-api || true
             docker rm meihe-villa-api || true
 
-            # Run new container
+            # Run new container with health check
             docker run -d \
               --name meihe-villa-api \
               -p 8000:8000 \
@@ -106,9 +107,30 @@ jobs:
               -e ENVIRONMENT=prod \
               -e S3_BUCKET_PROD=meihe-villa-media-asia \
               -e CLOUDFRONT_DOMAIN_PROD=d34s20t5chx0dl.cloudfront.net \
-              -e CORS_ORIGINS="http://localhost:3000,http://localhost:5173,http://43.207.31.220:3000,http://43.207.31.220" \
+              -e CORS_ORIGINS="http://localhost:3000,http://localhost:5173,http://${{ env.EC2_HOST }}:3000,http://${{ env.EC2_HOST }}" \
+              --health-cmd "curl -f http://localhost:8000/health || exit 1" \
+              --health-interval 30s \
+              --health-timeout 10s \
+              --health-retries 3 \
               --restart unless-stopped \
               332778198387.dkr.ecr.ap-northeast-1.amazonaws.com/meihe-villa-backend:latest
 
+            # Wait for container to be healthy
+            echo "Waiting for container to be healthy..."
+            for i in {1..30}; do
+              if docker inspect --format='{{.State.Health.Status}}' meihe-villa-api 2>/dev/null | grep -q healthy; then
+                echo "Container is healthy!"
+                break
+              fi
+              echo "Waiting... ($i/30)"
+              sleep 2
+            done
+
             # Clean up old images
             docker image prune -f
+
+      - name: Health check
+        run: |
+          sleep 10
+          curl -f http://${{ env.EC2_HOST }}:8000/health || exit 1
+          echo "Backend API is healthy!"
