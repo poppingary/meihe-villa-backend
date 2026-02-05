@@ -6,9 +6,9 @@ on:
       - main
 
 env:
-  AWS_REGION: us-east-2
+  AWS_REGION: ap-northeast-1
   ECR_REPOSITORY: meihe-villa-backend
-  EC2_HOST: 3.144.76.155
+  EC2_HOST: 43.207.31.220
 
 jobs:
   test:
@@ -85,10 +85,10 @@ jobs:
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
           script: |
             # Login to ECR
-            aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 332778198387.dkr.ecr.us-east-2.amazonaws.com
+            aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin 332778198387.dkr.ecr.ap-northeast-1.amazonaws.com
 
             # Pull latest image
-            docker pull 332778198387.dkr.ecr.us-east-2.amazonaws.com/meihe-villa-backend:latest
+            docker pull 332778198387.dkr.ecr.ap-northeast-1.amazonaws.com/meihe-villa-backend:latest
 
             # Stop and remove old container
             docker stop meihe-villa-api || true
@@ -102,12 +102,12 @@ jobs:
               -e SECRET_KEY=${{ secrets.SECRET_KEY }} \
               -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
               -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
-              -e AWS_REGION=us-east-2 \
+              -e AWS_REGION=ap-northeast-1 \
               -e ENVIRONMENT=prod \
-              -e S3_BUCKET_PROD=meihe-villa-media \
-              -e CLOUDFRONT_DOMAIN_PROD=d3e6xq549z85ve.cloudfront.net \
+              -e S3_BUCKET_PROD=meihe-villa-media-asia \
+              -e CLOUDFRONT_DOMAIN_PROD=d34s20t5chx0dl.cloudfront.net \
               --restart unless-stopped \
-              332778198387.dkr.ecr.us-east-2.amazonaws.com/meihe-villa-backend:latest
+              332778198387.dkr.ecr.ap-northeast-1.amazonaws.com/meihe-villa-backend:latest
 
             # Clean up old images
             docker image prune -f

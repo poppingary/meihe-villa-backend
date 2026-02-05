@@ -39,15 +39,15 @@ class Settings(BaseSettings):
     environment: str = "dev"  # "dev" or "prod"
     aws_access_key_id: str = ""
     aws_secret_access_key: str = ""
-    aws_region: str = "us-east-2"
+    aws_region: str = "ap-northeast-1"
 
-    # Dev environment
-    s3_bucket_dev: str = "meihe-villa-media-dev"
+    # Dev environment (Asia)
+    s3_bucket_dev: str = "meihe-villa-media-asia-dev"
     cloudfront_domain_dev: str = ""
 
-    # Prod environment
-    s3_bucket_prod: str = "meihe-villa-media"
-    cloudfront_domain_prod: str = ""
+    # Prod environment (Asia)
+    s3_bucket_prod: str = "meihe-villa-media-asia"
+    cloudfront_domain_prod: str = "d34s20t5chx0dl.cloudfront.net"
 
     # Pre-signed URL expiration (seconds)
     presigned_url_expiration: int = 3600  # 1 hour

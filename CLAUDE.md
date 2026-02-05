@@ -194,18 +194,19 @@ CORS_ORIGINS=http://localhost:3000,http://localhost:5173
 # AWS S3
 AWS_ACCESS_KEY_ID=your-access-key
 AWS_SECRET_ACCESS_KEY=your-secret-key
-AWS_REGION=ap-northeast-1
-S3_BUCKET_NAME=meihe-villa-media
-CLOUDFRONT_DOMAIN=d3e6xq549z85ve.cloudfront.net
+AWS_REGION=ap-northeast-1  # Tokyo (亞洲區域)
+S3_BUCKET_NAME=meihe-villa-media-asia
+CLOUDFRONT_DOMAIN=d34s20t5chx0dl.cloudfront.net
 
 # Environment (dev or prod)
 ENVIRONMENT=dev
 ```
 
-### Environment-specific S3 Buckets
+### Environment-specific S3 Buckets (Asia - ap-northeast-1)
 
-- **Development**: `meihe-villa-media-dev`
-- **Production**: `meihe-villa-media`
+- **Development**: `meihe-villa-media-asia-dev`
+- **Production**: `meihe-villa-media-asia`
+- **CloudFront**: `d34s20t5chx0dl.cloudfront.net`
 
 The `ENVIRONMENT` variable determines which bucket is used.
 
@@ -316,7 +317,7 @@ The `sync_s3_media.py` script syncs all known page image folders by default.
 ### S3 File Structure
 
 ```
-s3://meihe-villa-media/
+s3://meihe-villa-media-asia/
 ├── images/
 │   ├── gallery/        # ← managed by media library
 │   ├── heritage/       # referenced by heritage sites
